@@ -34,6 +34,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -66,7 +67,13 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.layer-bg {
+  background: rgb(5, 5, 5);
+  background: linear-gradient(90deg, rgba(5, 5, 5, 0.9752275910364145) 00%, rgba(51, 69, 69, 0.4009978991596639) 49%);
 }

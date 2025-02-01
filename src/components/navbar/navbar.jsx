@@ -48,13 +48,27 @@ export default function Navbar() {
                 </NavigationMenuItem>
             </NavigationMenuList>
             <NavigationMenuList>
-                <NavigationMenuItem>
+                <NavigationMenuItem className="flex gap-2">
+                    <Link href="/register" legacyBehavior passHref>
+
+                        <Button variant="outline">
+                            Register
+                        </Button>
+
+                    </Link>
+                    <Link href="/login">
+
+                        <Button variant="outline">
+                            Login
+                        </Button>
+
+                    </Link>
                     <Link href="/appointment" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            <Button variant="outline">
-                                Appointment
-                            </Button>
-                        </NavigationMenuLink>
+
+                        <Button variant="outline">
+                            Appointment
+                        </Button>
+
                     </Link>
                 </NavigationMenuItem>
             </NavigationMenuList>
