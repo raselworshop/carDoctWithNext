@@ -15,6 +15,7 @@ export default function LoginForm() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(password)
     toast("Submitting ....");
     try {
       const response = await signIn("credentials", {
@@ -43,9 +44,9 @@ export default function LoginForm() {
           <span className="label-text  font-bold">Email</span>
         </div>
         <input
-          type="text"
+          type="email"
           name="email"
-          placeholder="Type here"
+          placeholder="Type your email"
           className="input input-bordered w-full"
         />
       </label>
@@ -56,7 +57,7 @@ export default function LoginForm() {
         <input
           type="password"
           name="password"
-          placeholder="Type here"
+          placeholder="Type password"
           className="input input-bordered w-full"
         />
       </label>
