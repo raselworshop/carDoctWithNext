@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import { ThemeProvider } from "@/components/themeProvider/theme-provider";
+import { Toaster } from "react-hot-toast";
+import NextAuthProvider from "@/providers/NextAuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +33,14 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <nav className="my-5 space-x-2 container mx-auto">
-            <Navbar />
-          </nav>
-          {children}
+          <NextAuthProvider>
+            <nav className="my-5 space-x-2 container mx-auto">
+              <Navbar />
+            </nav>
+            <Toaster />
+            {children}
 
+          </NextAuthProvider>
         </ThemeProvider>
       </body>
     </html>

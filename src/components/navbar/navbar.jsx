@@ -1,11 +1,15 @@
+"use client"
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import { NavigationMenuList } from "@radix-ui/react-navigation-menu"
 import Link from "next/link"
 import { ModeToggle } from "../themeProvider/ModeToggle"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { signOut, useSession } from "next-auth/react"
 
 export default function Navbar() {
+    const { data: session, status } = useSession()
+    console.log('Current user captured', session)
     return (
         <NavigationMenu className="flex justify-between items-center  hover max-w-full">
             <NavigationMenuList>
@@ -47,31 +51,35 @@ export default function Navbar() {
                     <ModeToggle />
                 </NavigationMenuItem>
             </NavigationMenuList>
-            <NavigationMenuList>
-                <NavigationMenuItem className="flex gap-2">
-                    <Link href="/register" legacyBehavior passHref>
+            <NavigationMenuList className="flex gap-2">
+                {status === "authenticated" ? (
+                    <Button variant="outline" onClick={()=> signOut()}>Logout</Button>
+                ) : (
+                    <NavigationMenuItem className="flex gap-2">
+                        <Link href="/register" legacyBehavior passHref>
 
-                        <Button variant="outline">
-                            Register
-                        </Button>
+                            <Button variant="outline">
+                                Register
+                            </Button>
 
-                    </Link>
-                    <Link href="/login">
+                        </Link>
+                        <Link href="/login">
 
-                        <Button variant="outline">
-                            Login
-                        </Button>
+                            <Button variant="outline">
+                                Login
+                            </Button>
 
-                    </Link>
+                        </Link>
+                    </NavigationMenuItem>
+                )}
+                <NavigationMenuItem>
                     <Link href="/appointment" legacyBehavior passHref>
-
                         <Button variant="outline">
                             Appointment
                         </Button>
-
                     </Link>
-                </NavigationMenuItem>
-            </NavigationMenuList>
-        </NavigationMenu>
+                </NavigationMenuItem >
+            </NavigationMenuList >
+        </NavigationMenu >
     )
 }
