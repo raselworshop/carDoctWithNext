@@ -37,7 +37,7 @@ const CheckoutForm = ({ data:service }) => {
 
     console.log(bookingPayload);
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/service`,
+      `${process.env.NEXTAUTH_URL}/api/service`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

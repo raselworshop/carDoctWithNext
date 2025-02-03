@@ -1,4 +1,4 @@
-import CheckoutForm from '@/app/components/forms/chechoutForm.jsx/CheckoutForm';
+import CheckoutForm from '@/app/components/forms/chechoutForm/CheckoutForm';
 import React from 'react'
 
 export default async function page({ params }) {
