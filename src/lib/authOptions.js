@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { loginUser } from "../app/actions/auth/loginUser.js"
-import dbConnect, { collectionName } from "./dbConnect";
+import dbConnect, { collectionName } from "./dbConnect.js";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 

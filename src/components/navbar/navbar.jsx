@@ -48,6 +48,11 @@ export default function Navbar() {
                             Contacts
                         </NavigationMenuLink>
                     </Link>
+                    <Link href="/my-bookings" legacyBehavior passHref>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                            My Bookings
+                        </NavigationMenuLink>
+                    </Link>
                     <ModeToggle />
                 </NavigationMenuItem>
             </NavigationMenuList>

@@ -1,5 +1,22 @@
 import { NextResponse } from "next/server";
 import dbConnect, { collectionName } from "@/lib/dbConnect";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
+
+export const GET = async (req) => {
+
+    const session = await getServerSession(authOptions)
+    if (session) {
+        console.log("isexist user from service",session)
+        const email = session?.user?.email
+        const bookingCollection = dbConnect(collectionName.bookingCollection)
+        const result = await bookingCollection.find({ email }).toArray()
+
+        return NextResponse.json(result)
+    }
+
+    return NextResponse.json({})
+}
 
 export const POST = async (req) => {
 
