@@ -24,14 +24,15 @@ export default function LoginForm() {
         callbackUrl: "/",
         redirect: false,
       });
-      if (response.ok) {
+      if (response?.error) {
+        toast.error("FAILED to Log In");
+        console.log("Login Error:", response.error);
+      } else {
         toast.success("Logged In successfully");
         router.push("/");
         form.reset();
-      } else {
-        toast.error("FAILED to Log In");
       }
-      //console.log({ email, password });
+      console.log({ email, password });
     } catch (error) {
       console.log(error);
       toast.error("FAILED to Log In");

@@ -70,9 +70,23 @@ export const authOptions = {
         //   return baseUrl
         // },
         async session({ session, token, user }) {
-          return session
+            if (token) {
+                session.user = {
+                  id: token.id,
+                  email: token.email,
+                  name: token.name,
+                  image: token.image,
+                };
+              }
+              return session;
         },
         async jwt({ token, user, account, profile, isNewUser }) {
+            if (user) {
+                token.id = user._id;
+                token.email = user.email;
+                token.name = user.name;
+                token.image = user.image;
+              }
           return token
         }
       }

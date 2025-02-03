@@ -5,9 +5,12 @@ import Link from 'next/link';
 import React from 'react'
 
 export default async function ServiceDetails({ params }) {
+
     const { id } = await params;
-    const serviceCollection = dbConnect(collectionName.serviceCollection)
-    const data = await serviceCollection.findOne({ _id: new ObjectId(id) })
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/service/${id}`)
+    const data = await res.json();
+    console.log(data)
+
     return (
         <div className='container mx-auto'>
             <section className='flex justify-center '>
